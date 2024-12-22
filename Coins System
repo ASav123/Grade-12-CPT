@@ -1,0 +1,56 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class Coins : MonoBehaviour
+{
+    //Connects script to textbox boject
+    [SerializeField] private TextMeshProUGUI _leftCoinsText;
+    [SerializeField] private TextMeshProUGUI _rightCoinsText;
+
+    //Coin attributes
+    private int _leftCoins;
+    private int _rightCoins;
+
+    //Coin constructor
+    public void CoinsCreate(int trump, int crooks) 
+    {
+        this._leftCoins = trump;
+        this._rightCoins = crooks;
+    }
+
+    //Getters and setters
+    public int GetLeftCoins()
+    {
+        return this._leftCoins;
+    }
+    public void ChangeLeftCoins(int changeBy)
+    {
+        this._leftCoins += changeBy;
+    }
+
+    public int GetRightCoins()
+    {
+        return this._rightCoins;
+    }
+    public void ChangeRightCoins(int changeBy)
+    {
+        this._rightCoins += changeBy;
+    }
+
+
+
+    void Start()
+    {
+        //Defines coins of each player
+        CoinsCreate(500, 400);
+    }
+
+    void Update()
+    {
+        //Updates coin textboxes
+        this._leftCoinsText.text = string.Format($"Coins: {GetLeftCoins()}");
+        this._rightCoinsText.text = string.Format($"Coins: {GetRightCoins()}");
+    }
+}
